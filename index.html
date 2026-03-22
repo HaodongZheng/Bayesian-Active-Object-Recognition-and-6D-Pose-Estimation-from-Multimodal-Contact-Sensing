@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Paper Title</title>
+  <title>Bayesian Active Object Recognition and 6D Pose Estimation from Multimodal Contact Sensing</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -38,15 +38,15 @@
   <h1>Your Paper Title</h1>
 
   <div class="authors">
-    Author A, Author B, Author C
+    Haodong Zheng$^{1}$, Gabriele M. Caddeo$^{2}$, Andrei C. Jalba$^{1}$, Wijnand A. IJsselsteijn$^{1}$,\\ Lorenzo Natale$^{2}$, Raymond H. Cuijpers$^{1}$
   </div>
 
   <p>
-    Conference / Journal, Year
+    Arxiv Preprint, 2026
   </p>
 
   <div class="links">
-    <a href="assets/paper.pdf">Paper</a>
+    <!-- <a href="assets/paper.pdf">Paper</a> -->
     <a href="https://arxiv.org/abs/xxxx.xxxxx">arXiv</a>
     <a href="https://github.com/yourname/your-code-repo">Code</a>
     <a href="#bibtex">BibTeX</a>
@@ -54,7 +54,7 @@
 
   <h2>Abstract</h2>
   <p>
-    Put your abstract here.
+     We present an active tactile exploration framework for joint object recognition and 6D pose estimation. The proposed method integrates wrist force/torque sensing, GelSight tactile sensing, and free-space constraints within a Bayesian inference framework that maintains a belief over object class and pose during active tactile exploration. By combining contact and non-contact evidence, the framework reduces ambiguity and improves robustness in the joint class-pose estimation problem. To enable efficient inference in the large hypothesis space, we employ a customized particle filter that progressively samples particles based on new observations. The inferred belief is further used to guide active exploration by selecting informative next touches under reachability constraints. For effective data collection, a motion planning and control framework is developed to plan and execute feasible paths for tactile exploration, handle unexpected contacts and GelSight-surface alignment with tactile servoing. We evaluate the framework in simulation and on a Franka Panda robot using 11 YCB objects. Results show that incorporating tactile and free-space information substantially improves recognition and pose estimation accuracy and stability, while reducing the number of action cycles compared with force/torque-only baselines. Code, dataset, and supplementary material will be made available online.
   </p>
 
   <h2>Teaser</h2>
