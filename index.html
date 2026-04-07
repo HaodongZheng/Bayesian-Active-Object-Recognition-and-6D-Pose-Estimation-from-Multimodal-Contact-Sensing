@@ -52,13 +52,13 @@
   <p><sup>*</sup> Corresponding author</p>
 </div>
   <p>
-    Arxiv Preprint, 2026
+    Preprint arXiv, 2026
   </p>
 
   <div class="links">
     <!-- <a href="assets/paper.pdf">Paper</a> -->
     <a href="https://arxiv.org/abs/2603.21410">arXiv</a>
-    <a href="https://github.com/yourname/your-code-repo">Code(in preparation)</a>
+    <a href="https://github.com/yourname/your-code-repo">Code  (to be released)</a>
     <a href="#bibtex">BibTeX</a>
   </div>
 
@@ -67,14 +67,34 @@
      We present an active tactile exploration framework for joint object recognition and 6D pose estimation. The proposed method integrates wrist force/torque sensing, GelSight tactile sensing, and free-space constraints within a Bayesian inference framework that maintains a belief over object class and pose during active tactile exploration. By combining contact and non-contact evidence, the framework reduces ambiguity and improves robustness in the joint class-pose estimation problem. To enable efficient inference in the large hypothesis space, we employ a customized particle filter that progressively samples particles based on new observations. The inferred belief is further used to guide active exploration by selecting informative next touches under reachability constraints. For effective data collection, a motion planning and control framework is developed to plan and execute feasible paths for tactile exploration, handle unexpected contacts and GelSight-surface alignment with tactile servoing. We evaluate the framework in simulation and on a Franka Panda robot using 11 YCB objects. Results show that incorporating tactile and free-space information substantially improves recognition and pose estimation accuracy and stability, while reducing the number of action cycles compared with force/torque-only baselines. Code, dataset, and supplementary material will be made available online.
   </p>
 
-  <h2>Teaser</h2>
-  <img src="assets/teaser.png" alt="Teaser figure">
+  <!-- <h2>Teaser</h2>
+  <img src="assets/teaser.png" alt="Teaser figure"> -->
 
   <h2>Method</h2>
   <p>
-    Briefly explain your method here.
+      Our goal is to enable a robot to recognize an object and estimate its 6D pose through active physical interaction. Instead of relying on a single contact signal, the proposed framework fuses three complementary sources of information: wrist force/torque sensing, local surface geometry recovered from a GelSight tactile sensor, and free-space constraints obtained from the robot motion itself. The key idea is that both contact and non-contact events are informative: touches provide positive evidence about where the object surface is, while collision-free motion rules out regions of space the object cannot occupy.
+    
+      These multimodal observations are integrated in a Bayesian inference framework that maintains a belief over both object class and object pose during exploration. To keep inference tractable in the large class–pose space, we use a customized particle filter with proposal heuristics that progressively focus samples on plausible hypotheses as new measurements arrive. The likelihood model combines force-based contact constraints, tactile contact patches and normals from GelSight, and free-space non-penetration evidence. In addition, the local contact type inferred from the tactile image, such as planar, edge, or corner contact, is used to adapt the likelihood, for example by down-weighting normal consistency when local geometry is ambiguous. The framework is closed with an active exploration and control loop. Based on the current maximum a posteriori hypothesis, the robot selects an informative next touch target while accounting for reachability. A planning and control stack then moves the robot to a safe pre-touch configuration, executes compliant contact, and applies tactile servoing to align the GelSight sensor with the object surface and center the contact patch on the sensor. This improves robustness and data quality under model mismatch and hardware uncertainty.
+      Key Contributions      
   </p>
 
+  <h2>Experimental Highlights</h2>
+  <p>
+      A unified probabilistic framework for joint object recognition and 6D pose estimation from multimodal contact sensing, combining force/torque measurements, GelSight tactile geometry, and motion-derived free-space constraints.
+      
+      An active exploration pipeline that connects Bayesian inference with reachability-aware target selection, motion planning, compliant execution, and tactile servoing.
+      
+      Real-robot and simulation experiments showing that fusing the full spectrum of contact-derived information improves both recognition speed and pose estimation accuracy compared with partial-modality baselines.
+  </p>
+  
+  <h2>Experimental Highlights</h2>
+  <p>
+    We evaluate the full autonomous pipeline in simulation and on a Franka Panda robot using 11 YCB objects. Across experiments, multimodal fusion consistently improves performance over force/torque-only or partial-ablation variants. In the real-world setting, the full method reaches object recognition within about 4 action cycles on average and reaches the target pose accuracy within about 6 action cycles on average. The complete multimodal system also reaches 100% success in both classification and pose-estimation metrics after 11 action cycles in the reported real-world experiments.
+    The results further show that free-space information plays a particularly important role in reducing ambiguity. Compared with force/torque sensing alone, adding free-space constraints substantially improves both speed and stability, while the combination of force/torque, GelSight, and free-space cues yields the most consistent overall performance.
+  </p>
+
+
+  
   <h2>Video</h2>
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
       <iframe
